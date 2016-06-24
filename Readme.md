@@ -1,6 +1,6 @@
 # Ferguson Twitter Data
 
-This dataset is a collection of tweets from 1.2M Twitter users who were actively engaged in discussions about events surrounding the deaths of Eric Garner and Michael Brown.
+This dataset is a collection of 3,164,569,430 (3.1B) tweets from ~1.2M Twitter users who were actively engaged in discussions about events surrounding the deaths of Eric Garner and Michael Brown.
 
 # Collection methodology
 Approximately a week after the Michael Brown tragedy, I collected data for approximately two weeks using a keyword search on the Twitter Streaming API with terms relevant to the situation (“ferguson”, “michael brown”, “darren wilson”). I then stopped collecting data until the grand jury investigation finished, at which point I used several connections to the streaming API to search another set of relevant terms for approximately a week (#fergusondecision, McCulloch, brown, ferguson, michael brown, berkeley, darren wilson, police). Following the Eric Garner grand jury conclusion, I used the keywords “garner” and “eric garner” to search the Streaming API, again for approximately a week. I also developed a different keyword set to continuously capture data from the Streaming API around that time (icantbreathe , i cant breathe, garner, michael brown, freedom plaza, blacklivesmatter, alllivesmatter), which I ran for around five weeks.
@@ -30,9 +30,9 @@ The dataset is provided as-is, no additional information will be provided. If yo
 
 There are three data files for this dataset:
 
-- <LINK>/all_ferguson_tweet_ids.txt.gz - (~24GB) - IDs for all tweets from all users in the dataset, one per line
-- <LINK>/follower_network.txt.gz - (~8GB) - Followers for all users in the dataset (file detail below)
-- <LINK>/friend_network.txt.gz - (~9GB) - Friends for all users in the dataset
+- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/all_ferguson_tweet_ids.txt.gz - (~24GB) - IDs for all tweets from all users in the dataset, one per line
+- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/follower_network.txt.gz - (~8GB) - Followers for all users in the dataset (file detail below)
+- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/friend_network.txt.gz - (~9GB) - Friends for all users in the dataset
 
 The format of the friend and follower network files is as follows:
 ```
@@ -40,4 +40,14 @@ user_id_1 <tab> friend1_id friend2_id friend3_id ...
 user_id_2 <tab> friend1_id friend2_id friend3_id ...
 ```
 
-# Recollection
+# Recollection of tweets from IDs
+
+Abiding by Twitter's Terms of Service, this dump only provides IDs of tweets in the dataset. In order to "hydrate" those tweet IDs, or in other words, to collect the actual tweets, you'll have to access the API. Unfortunately, in order to collect all tweets with a single, serial connection to the API would take a very, very long time (on the order of years w/ current API restrictions).
+
+You therefore have a few options that I know of (but please tell me if you have a better approach!):
+
+- subselect users of interest (from the networks) and then re-collect data from these users yourself
+- Parallelize the download using your own approach, e.g. via multiple connections using ```tweepy```
+- Parallelize the download using a package I have developed called ```twitter_dm```, available on GitHub at https:www.github.com/kennyjoseph/twitter_dm .  The script ```examples/collect_tweets.py``` in the ```twitter_dm``` package provides an easy way to leverage all connections to parallelize downloading of the tweet IDs.
+
+Note that the last two approaches (and probably the first) requires multiple connections to the API.
