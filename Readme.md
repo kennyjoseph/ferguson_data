@@ -30,9 +30,9 @@ The dataset is provided as-is, no additional information will be provided. If yo
 
 There are three data files for this dataset:
 
-- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/all_ferguson_tweet_ids.txt.gz - (~24GB) - IDs for all tweets from all users in the dataset, one per line
-- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/follower_network.txt.gz - (~8GB) - Followers for all users in the dataset (file detail below)
-- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/friend_network.txt.gz - (~9GB) - Friends for all users in the dataset
+- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/all_ferguson_tweet_ids.txt.gz - (~24G) - IDs for all tweets from all users in the dataset, one per line
+- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/follower_network.txt.gz - (~17G) - Followers for all users in the dataset (file detail below)
+- https://dl.dropboxusercontent.com/u/53207718/ferguson_data/friend_network.txt.gz - (~5.8G) - Friends for all users in the dataset
 
 The format of the friend and follower network files is as follows:
 ```
